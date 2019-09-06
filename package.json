@@ -1,0 +1,19 @@
+{
+  "name": "vue-01",
+  "version": "1.0.0",
+  "description": "开始复习vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UserNameClj/data_manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UserNameClj/data_manager/issues"
+  },
+  "homepage": "https://github.com/UserNameClj/data_manager#readme"
+}
