@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/UserNameClj/data_manager/issues"
   },
-  "homepage": "https://github.com/UserNameClj/data_manager#readme"
+  "homepage": "https://github.com/UserNameClj/data_manager#readme",
+  "dependencies": {}
 }
