@@ -16,5 +16,7 @@
     "url": "https://github.com/UserNameClj/data_manager/issues"
   },
   "homepage": "https://github.com/UserNameClj/data_manager#readme",
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
