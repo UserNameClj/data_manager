@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .red {
+        color: red
+    }
+
+    .bc-blue {
+        background-color: black;
+    }
+
+    .box {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- 普通指令的熟悉 -->
+        <!-- v-model可以进行数据双向绑定 -->
+        <input type="text" v-model='mag'>
+        {{mag}}
+        <!-- v-html可以加载data的html，还可以防止xss插入 -->
+        <p v-html="tag"></p>
+        <!-- 点击事件 -->
+        <button @click='add()' :class='[isRed,isBlue]'>{{num}}</button>
+        <!-- 学习v-if显示隐藏指令 -->
+        <!-- v-show比v-if有更高的渲染开销 -->
+        <br>
+        <input type="checkbox" v-model='isShow'>显示
+        <div class="red box" v-if='isShow'>
+        </div>
+        <!-- 学习v-for，绑定一个：key，当key发生改变时，会重新渲染，当key值没有时会去掉 -->
+        <div v-for="(color,index) in colors" :key="color.id">
+            <!-- <span>{{color.id}}}</span> -->
+            <span>{{color.id}}</span>
+            <span>{{color.color}}</span>
+        </div>
+        <!-- 迭代对象 -->
+        <div v-for="(key,value,index) in people">
+            <div>{{value}}:{{key}}</div>
+        </div>
+        <div @click='todo()'>
+            <!-- 事件修饰符，.stop阻止事件继续向往外传播
+                        .prevent阻止事件默认行为，比如阻止a标签跳转，
+                        .once点击事件将只出发一次 -->
+                <button @click.stop='doIt()'>点击会向外传播</button>
+        </div>
+        <input type="text" @keydown.left=left()>
+    </div>
+    
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                mag: 'hello vue',
+                tag: '<p style="color: red"> 这是v-html插入</p>',
+                num: '3',
+                // 学习如何使用:class
+                isRed: 'red',
+                isBlue: 'bc-blue',
+                isShow: true,
+                colors: [{
+                    id: 3,
+                    color: '红色'
+                }, {
+                    id: 2,
+                    color: '橙色'
+                }, {
+                    id: 5,
+                    color: '黄色'
+                }, {
+                    color: '绿色'
+                }, {
+                    id: 9,
+                    color: '蓝色'
+                }, {
+                    id: 10,
+                    color: '紫色'
+                }],
+                people:{name:'xiaohong',age:13}
+
+            },
+            methods: {
+                // 学习事件修饰符
+                todo(){
+                    console.log('接收到里面的点击事件')
+                },
+                doIt(){
+                   alert(333)
+                },
+                left(){
+                    console.log('在按左键')
+                },
+                add() {
+                    console.log(111)
+                    this.num++
+                }
+            },
+            // computed会进行缓存，数据不变，不会执行
+            computed: {
+                clac() {
+                    console.log(this.num)
+                    return this.num
+                }
+            },
+            watch: {
+                num(old, m) {
+                    console.log(old, m)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
