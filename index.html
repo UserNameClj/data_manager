@@ -17,16 +17,16 @@
 
 <body>
     <div id="app" v-cloak>
-        <title-a></title-a>
-        <div>{{theme}}</div>
-        <div>
-            {{dirtyLang | hideDirty()}}
-        </div>
-        <local-compon></local-compon>
+     <self-header></self-header>
+     <self-conten></self-conten>
+     <self-footer></self-footer>
     </div>
 
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./js/list.js"></script>
+    <script src="./componets/selfHeader.js"></script>
+    <script src="./componets/selfConten.js"></script>
+    <script src="./componets/selfFooter.js"></script>
     <script>
         Vue.component('title-a', {
             template: '<div><p>{{component}},</p></div>',
@@ -45,6 +45,7 @@
             }
 
         }
+        var selfHeader
         var vm = new Vue({
             el: '#app',
             data: {
@@ -53,8 +54,7 @@
                 dirtyLang: 'tmd nizhenshi bs bt'
             },
             components: {
-                'local-compon': localCompon,
-
+                'local-compon': localCompon
             }
         })
     </script>

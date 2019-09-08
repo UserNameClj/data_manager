@@ -6,41 +6,28 @@
 li{
     list-style: none;
 }
-.task-list [type=checkbox]{
-    height: 18px;
-    width: 18px;
-    margin-right: 14px;
-}
-.theme{
-    text-align: center;
-    font-size: 24px;
-    font-weight: 500;
-}
-.list-box{
-    width: 500px;
-    min-height: 60px;
-    border: 1px solid #dddddd;
-    margin: 50px auto;
-}
-.input input{
-    width: 500px;
+header{
+    width: 100vw;
     height: 60px;
+    background-color:rgba(2,2,2,0.8);
 }
-.task-list{
-    margin-top: 30px
+#conten{
+    display: flex;
+    height: calc(100vh - 105px);
+    width: 100vw;
+    flex-direction: row;
 }
-.task-list li{
-    height: 60px;
-    padding: 0px 30px;
-    line-height: 60px;
+footer{
+    height: 45px;
+    width: 100vw;
+    background-color: #936723;
 }
-.task-close.close{
-    height: 60px;
-    line-height: 60px;
+#conten .left-menu{
+    width: 240px;
+    height: 100%;
+    background-color: #442993;
 }
-.task-close.close span{
-    font-size: 36px;
-}
-.task-list li:hover{
-    background: #cccccc
+#conten .data-zone{
+    flex: 1;
+    background-color: #998ffd;
 }
