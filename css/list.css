@@ -1,0 +1,46 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+.task-list [type=checkbox]{
+    height: 18px;
+    width: 18px;
+    margin-right: 14px;
+}
+.theme{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+.list-box{
+    width: 500px;
+    min-height: 60px;
+    border: 1px solid #dddddd;
+    margin: 50px auto;
+}
+.input input{
+    width: 500px;
+    height: 60px;
+}
+.task-list{
+    margin-top: 30px
+}
+.task-list li{
+    height: 60px;
+    padding: 0px 30px;
+    line-height: 60px;
+}
+.task-close.close{
+    height: 60px;
+    line-height: 60px;
+}
+.task-close.close span{
+    font-size: 36px;
+}
+.task-list li:hover{
+    background: #cccccc
+}

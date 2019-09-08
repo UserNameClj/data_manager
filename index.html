@@ -6,85 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/list.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <style>
-    .red {
-        color: red
+    [v-cloak] {
+        display: none
     }
-
-    .bc-blue {
-        background-color: black;
-    }
-
-    .box {
-        height: 100px;
-        width: 100px;
-        background: red
-    }
-
-    /* 进入效果 */
-    .mxg-enter-active {
-        transition: all 6s
-    }
-
-    /* 出去效果 */
-    .mxg-leave-active {
-
-        transition: all 5s
-    }
-
-    /* 显示效果 */
-    .mxg-enter-to {
-        opacity: 1;
-        background-color: red;
-    }
-
-    /* 隐藏后的效果 */
-    .mxg-leave-to {
-        opacity: 0;
-        transform: translateX(100px);
-        background-color: black;
-    }
-
-    /* 进来的效果 */
 </style>
 
 <body>
-    <div id="app">
-        <div>主题:{{theme}}</div>
-        <input type="checkbox" v-model=isShow>
-        <transition name='mxg'>
-            <div class="box" v-show='isShow'>
-        </transition>
-        <!-- 使用自定义指令 -->
-        <div v-text-tri='messge'></div>
-
-    </div>
+    <div id="app" v-cloak>
+        <div class="theme">{{theme}}</div>
+        <div class="list-box">
+            <div class="input">
+                <input type="text" v-self-focus v-model="doData" @keyup.enter='record(doData)'>
+            </div>
+            <ul class="task-list">
+                <li>
+                    <input type="checkbox" v-model="all" @click='selectAll()'><span class="choose-all-text">{{allText}}</span>
+                </li>
+                <li v-for="(list,index) in listData" :key="index" @mouseover='mouseOnList(index)'>
+                    <input type="checkbox" v-model="list.hasSelect">
+                    <span>{{list.list}}</span>
+                    <button type="button" class="close task-close" v-if='hideClose===index' @click='delTask(index)'>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script src="./node_modules/vue/dist/vue.js"></script>
-    <script>
-        // 编写添加自己指令,去除字符串的数字指令，全局添加指令
-       Vue.directive('text-tri',{
-           //一般操作css就使用bind
-           bind(el){el.style.color='blue'},
-           //一般事操作js内容使用inserted
-           inserted:function(el,binding){
-               el.innerHTML = binding.value.replace(/[1-9]/g,'')
-           }
-       })
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                theme: "学习vue制作动画效果",
-                isShow: true,
-                isActive: true,
-                messge:'fuhjki23jkl432'
-
-
-            }
-        })
-    </script>
+    <script src="./js/list.js"></script>
 </body>
 
 </html>

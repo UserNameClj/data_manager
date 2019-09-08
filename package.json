@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/UserNameClj/data_manager#readme",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "vue": "^2.6.10"
   }
 }
