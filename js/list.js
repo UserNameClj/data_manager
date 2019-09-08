@@ -15,67 +15,10 @@
                 console.log('引用聚焦成功')
             }
         })
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                theme: "列表渲染项目练习",
-                doData: '',
-                listData: window.sessionStorage.listData && JSON.parse(window.sessionStorage.listData) || [],
-                hideClose: -1,
-                allText: '选择所有',
-                all: false
-            },
-            methods: {
-                record(db, i) {
-                    var dbData = db.trim()
-                    dbData && this.listData.push({
-                        id: i,
-                        list: dbData,
-                        hasSelect: false
-                    });
-                    this.doData = ''
-                },
-                mouseOnList(i) {
-                    this.hideClose = i
-                },
-                delTask(i) {
-                    this.listData.splice(i, 1)
-                },
-                selectAll() {
-                    this.all = !this.all;
-
-                    function choseBox(flag) {
-                        for (var i = 0; i < this.listData.length; i++) {
-                            this.listData[i].hasSelect = flag
-                        }
-                    }
-                    if (this.all) {
-                        choseBox.call(this, true)
-                    } else {
-                        choseBox.call(this, false)
-                    }
-                }
-            },
-            watch: {
-                listData: {
-                    handler(){
-                        window.sessionStorage.listData = JSON.stringify(this.listData);
-                        var checkRight = 0;
-                        for (var i = 0; i < this.listData.length; i++) {
-                            if (this.listData[i].hasSelect) {
-                                checkRight++;
-                            }
-                        }
-                        if (checkRight == this.listData.length) {
-                            this.all = true;
-                            
-                        } else {
-                            this.all = false;
-                        }
-                    },
-                    immediate:true,
-                    deep:true
-                },
-
-            }
+        // 定义过滤器,全局过滤器学习
+        Vue.filter('hideDirty',function(value){
+            return value.toString().toLowerCase().replace(/tmd|bs|bt/g,'***')
         })
+        // 定义全局组件学习
+    
+   

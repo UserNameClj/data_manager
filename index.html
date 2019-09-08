@@ -17,28 +17,47 @@
 
 <body>
     <div id="app" v-cloak>
-        <div class="theme">{{theme}}</div>
-        <div class="list-box">
-            <div class="input">
-                <input type="text" v-self-focus v-model="doData" @keyup.enter='record(doData)'>
-            </div>
-            <ul class="task-list">
-                <li>
-                    <input type="checkbox" v-model="all" @click='selectAll()'><span class="choose-all-text">{{allText}}</span>
-                </li>
-                <li v-for="(list,index) in listData" :key="index" @mouseover='mouseOnList(index)'>
-                    <input type="checkbox" v-model="list.hasSelect">
-                    <span>{{list.list}}</span>
-                    <button type="button" class="close task-close" v-if='hideClose===index' @click='delTask(index)'>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </li>
-            </ul>
+        <title-a></title-a>
+        <div>{{theme}}</div>
+        <div>
+            {{dirtyLang | hideDirty()}}
         </div>
+        <local-compon></local-compon>
     </div>
 
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./js/list.js"></script>
+    <script>
+        Vue.component('title-a', {
+            template: '<div><p>{{component}},</p></div>',
+            data() {
+                return {
+                    component: '我开始做组件了'
+                }
+            }
+        })
+        var localCompon = {
+            template: '<div><div>{{lacalData}}</div></div>',
+            data() {
+                return {
+                    lacalData:'这是局部组件'
+                }
+            }
+
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                theme: "列表渲染项目练习",
+                doData: '',
+                dirtyLang: 'tmd nizhenshi bs bt'
+            },
+            components: {
+                'local-compon': localCompon,
+
+            }
+        })
+    </script>
 </body>
 
 </html>
