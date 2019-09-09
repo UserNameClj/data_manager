@@ -20,44 +20,19 @@
      <self-header></self-header>
      <self-conten></self-conten>
      <self-footer></self-footer>
-    </div>
 
+     
+    </div>
+    <script src="./js/AppTitle.js"></script>
+    <script src="./js/AppData.js"></script>
     <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script src="./router.js"></script>
     <script src="./js/list.js"></script>
     <script src="./componets/selfHeader.js"></script>
     <script src="./componets/selfConten.js"></script>
     <script src="./componets/selfFooter.js"></script>
-    <script>
-        Vue.component('title-a', {
-            template: '<div><p>{{component}},</p></div>',
-            data() {
-                return {
-                    component: '我开始做组件了'
-                }
-            }
-        })
-        var localCompon = {
-            template: '<div><div>{{lacalData}}</div></div>',
-            data() {
-                return {
-                    lacalData:'这是局部组件'
-                }
-            }
-
-        }
-        var selfHeader
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                theme: "列表渲染项目练习",
-                doData: '',
-                dirtyLang: 'tmd nizhenshi bs bt'
-            },
-            components: {
-                'local-compon': localCompon
-            }
-        })
-    </script>
+    <script src="./main.js"></script>
 </body>
 
 </html>
