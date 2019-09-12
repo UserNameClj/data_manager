@@ -1,6 +1,6 @@
 <template>
-  <div class="work-man-scope">
-    <ToolBar></ToolBar>
+  <div class="teacher-scope">
+    <tool-bar></tool-bar>
     <data-bar></data-bar>
   </div>
 </template>
@@ -9,10 +9,10 @@
 import ToolBar from './ToolBar';
 import DataBar from "./DataBar"
 export default {
-  name: "WorkerMan",
+  name: "TeacherMsg",
   data() {
     return {
-      roles:'毕业生'
+      msg: "laoshiyemian"
     };
      },
   components: {
@@ -23,15 +23,13 @@ export default {
 </script>
 
 <style scoped>
-.work-man-scope{
+.teacher-scope{
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-
-.work-man-data-scope{
-  width: 100%;
+.teacher-msg-data{
   flex: 1;
-  background: gray;
+  background: #00dcdd
 }
 </style>

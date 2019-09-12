@@ -1,37 +1,39 @@
 <template>
-  <div class="work-man-scope">
-    <ToolBar></ToolBar>
+  <div class="student-scope">
+    <tool-bar></tool-bar>
     <data-bar></data-bar>
   </div>
 </template>
 
 <script>
-import ToolBar from './ToolBar';
+import ToolBar from "./ToolBar";
 import DataBar from "./DataBar"
 export default {
-  name: "WorkerMan",
+  name: "StudentMsg",
   data() {
     return {
-      roles:'毕业生'
+      msg: "在校生",
+ 
     };
-     },
+  },
   components: {
     ToolBar,
     DataBar
+  },
+  methods: {
+
   }
 };
 </script>
 
 <style scoped>
-.work-man-scope{
+.student-scope {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-
-.work-man-data-scope{
-  width: 100%;
+.student-msg-data {
   flex: 1;
-  background: gray;
+  background: #ddf444;
 }
 </style>

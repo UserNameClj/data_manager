@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+
 // import HelloWorld from "@/components/HelloWorld.vue";
 import StuHeader from "@/components/header/Header.vue";
 import StuConten from "@/components/conten/Conten.vue";
@@ -30,10 +31,17 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+.black-theme {
+  background-color: #545c64 !important;
+  color: #fff !important;
+}
+@import './style/font-awesome-4.7.0/css/font-awesome.css'
+
 </style>
