@@ -4,9 +4,9 @@
       router
       :default-active="$route.name || defaultActive"
       class="stu-left-nav"
+      :class="currenTheme"
       @select="test('default-active')"
-      background-color="#545c64"
-      text-color="#fff"
+      :text-color="currenColor"
       active-text-color="#ffd04b"
       
     >
@@ -19,6 +19,9 @@
 </template>
 
 <script>
+  // <!-- background-color="#545c64"
+  //     text-color="#fff" -->
+import PubSub from 'pubsub-js'
 export default {
   name: "LeftNav",
   data() {
@@ -32,6 +35,8 @@ export default {
         ],
       defaultActive:"Home",
       msg: "这是左菜单",
+      currenTheme:'black-theme',
+      currenColor:'#fff',
       router: true
     };
   },
@@ -40,19 +45,31 @@ export default {
       console.log(this.$route)
     }
   },
-  components: {}
+  components: {},
+  mounted () {
+    PubSub.subscribe('CurrenTheme',(msg,i)=>{
+      if(i==0){
+        this.currenTheme='black-theme';
+        this.currenColor='#fff'
+      }else{
+        this.currenTheme='white-theme';
+        this.currenColor='#000000'
+
+      }
+    })
+  }
 };
 </script>
 
 <style scoped>
 .left-nav {
   width: 240px;
-  height: 100%;
-  background-color: #ff00ff;
+  height: calc(100vh -107px);
+  overflow: auto
 }
 .left-nav .stu-left-nav {
-  height: 100%;
   padding-top: 100px;
+  height: 100%
 }
 .menu-icon{
   width: 60px;

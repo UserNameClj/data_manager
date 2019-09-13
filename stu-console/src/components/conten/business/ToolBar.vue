@@ -1,5 +1,5 @@
 <template>
-  <div class="tool-bar" :class="currenThemeClass">
+  <div class="tool-bar" :class="currenTheme">
     <el-row class="search-btn">
       <el-input
         v-model="searchMsg"
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
 export default {
   name: "ToolBar",
   data() {
@@ -21,7 +22,7 @@ export default {
       searchMsg: "",
       holderText: "搜索学生姓名或者学号",
       searchBtn: "搜索",
-      currenThemeClass:"black-theme"
+      currenTheme:"black-theme"
     };
   },
   components: {},
@@ -34,6 +35,13 @@ export default {
   },
   mounted () {
     this.$refs.search.focus();
+    PubSub.subscribe('CurrenTheme',(msg,i)=>{
+      if(i==0){
+        this.currenTheme='black-theme';
+      }else{
+        this.currenTheme='white-theme';
+      }
+    })
   }
 };
 </script>
@@ -42,7 +50,6 @@ export default {
 .tool-bar {
   width: 100%;
   height: 80px;
-  background-color: pink;
   text-align: center;
   line-height: 80px;
 }

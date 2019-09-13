@@ -16,6 +16,7 @@
 import StuHeader from "@/components/header/Header.vue";
 import StuConten from "@/components/conten/Conten.vue";
 import StuFooter from "@/components/footer/StuFooter.vue";
+
 export default {
   data() {
     return {
@@ -38,9 +39,22 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.float-clear{
+  clear: both;
+}
 .black-theme {
   background-color: #545c64 !important;
   color: #fff !important;
+}
+.white-theme {
+  background: #fffffd;
+  color: #323232
 }
 @import './style/font-awesome-4.7.0/css/font-awesome.css'
 

@@ -1,6 +1,9 @@
 <template>
   <div class="stu-data">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    
   </div>
 </template>
 

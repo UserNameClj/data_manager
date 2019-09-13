@@ -2,12 +2,14 @@
   <div class="conten">
     <LeftNav></LeftNav>
     <StuData></StuData>
+    
   </div>
 </template>
 
 <script>
 import LeftNav from "./LeftNav.vue";
 import StuData from "./StuData.vue";
+import PubSub from "pubsub-js"
 export default {
   name: "StuConten",
   data() {
@@ -18,14 +20,28 @@ export default {
   components: {
     LeftNav,
     StuData
+  },
+  methods: {
+    
+  },
+  mounted () {
+    PubSub.subscribe("CurrenTheme",(msg,i)=>{
+      if(i==0){
+        this.currenTheme = 'black-theme';
+      }
+      else{
+        this.currenTheme = 'white-theme'
+      }
+    })
   }
 };
 </script>
 
 <style scoped>
 .conten {
-  height: calc(100vh - 105px);
+  height: calc(100vh - 107px);
   width: 100vw;
+  overflow: auto;
   display: flex;
 }
 </style>
