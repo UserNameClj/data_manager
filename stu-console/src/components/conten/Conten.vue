@@ -1,5 +1,5 @@
 <template>
-  <div class="conten">
+  <div class="conten" :class="currenTheme">
     <LeftNav></LeftNav>
     <StuData></StuData>
     
@@ -14,7 +14,8 @@ export default {
   name: "StuConten",
   data() {
     return {
-      mag: "这是内容栏"
+      mag: "这是内容栏",
+      currenTheme:'black-theme'
     };
   },
   components: {

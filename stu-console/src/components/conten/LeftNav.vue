@@ -64,8 +64,6 @@ export default {
 <style scoped>
 .left-nav {
   width: 240px;
-  height: calc(100vh -107px);
-  overflow: auto
 }
 .left-nav .stu-left-nav {
   padding-top: 100px;

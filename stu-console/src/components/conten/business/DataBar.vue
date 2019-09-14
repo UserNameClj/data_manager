@@ -33,6 +33,7 @@
 
 <script>
 import PubSub from "pubsub-js";
+import Axios from "axios";
 var blackTheme = {
   background: "#545c64",
   color: "#000000",
@@ -43,58 +44,20 @@ var whiteTheme = {
   color: "#000000",
   height: "30px"
 };
+var addClassMsg = (arr, data) => {
+  arr.push({
+    value: data,
+    label: data,
+    children: []
+  });
+};
 
 export default {
   name: "DataBar",
   data() {
     return {
-      className: ["2013", "jisuanji", "class1"],
-      classItem: [
-        {
-          value: "2013",
-          label: "2013",
-          children: [
-            {
-              value: "jisuanji",
-              label: "计算机",
-              children: [
-                {
-                  value: "class1",
-                  label: "一班"
-                },
-                {
-                  value: "class2",
-                  label: "二班"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: "2014",
-          label: "2014",
-          children: [
-            {
-              value: "jisuanji",
-              label: "计算机",
-              children: [
-                {
-                  value: "class1",
-                  label: "一班"
-                },
-                {
-                  value: "class2",
-                  label: "二班"
-                },
-                {
-                  value: "class1",
-                  label: "三班"
-                }
-              ]
-            }
-          ]
-        }
-      ],
+      className: [],
+      classItem: [],
       tableData: [
         {
           id: 1,
@@ -127,6 +90,28 @@ export default {
   },
   components: {},
   methods: {
+    getClassMsg() {
+      Axios.get("/class/massage").then(res => {
+        var data = res.data;
+        if (data.code == 0) {
+          var classList = [];
+          data.data.map((x, i) => {
+            addClassMsg(classList, x.session);
+            x.subject.map((sub, j) => {
+              addClassMsg(classList[i].children, sub.name);
+              for (let k = 0; k < sub.classNum; k++) {
+                classList[i].children[j].children.push({
+                  value: "class" + (k - 0 + 1),
+                  label: k - 0 + 1 + "班",
+                  classId:sub.id
+                });i9
+              }
+            });
+          });
+        }
+        this.classItem = classList;
+      });
+    },
     handleChange() {
       console.log(222);
     }
@@ -141,6 +126,7 @@ export default {
         this.currenTheme = whiteTheme;
       }
     });
+    this.getClassMsg();
   }
 };
 </script>
