@@ -25,12 +25,12 @@ export default {
         this.currenTheme = "white-theme";
       }
     });
-    // axios.get('/test').then(response=>{
-    //   console.log(response)
+    axios.get('/class/message').then(response=>{
+      // console.log(response,1)
 
-    // },error=>{
-    //   console.log(error)
-    // })
+    },error=>{
+      console.log(error,2)
+    })
   }
 };
 </script>
@@ -38,7 +38,8 @@ export default {
 <style scoped>
 .footer {
   border-top: 1px solid #dddddd;
-  line-height: 45px;
+  line-height: 30px;
+  z-index: 10001
 }
 .copy-right {
   text-align: center;

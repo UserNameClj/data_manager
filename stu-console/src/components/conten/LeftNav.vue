@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     test(m){
-      console.log(this.$route)
+      // console.log(this.$route)
     }
   },
   components: {},
@@ -67,7 +67,11 @@ export default {
 }
 .left-nav .stu-left-nav {
   padding-top: 100px;
-  height: 100%
+  height: calc(100% - 91px);
+  width: 240px;
+  position: fixed;
+  left: 0px;
+  top: 60px
 }
 .menu-icon{
   width: 60px;

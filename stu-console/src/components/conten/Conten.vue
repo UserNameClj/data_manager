@@ -40,8 +40,9 @@ export default {
 
 <style scoped>
 .conten {
-  height: calc(100vh - 107px);
+  height: calc(100vh - 91px);
   width: 100vw;
+  padding: 0px 30px;
   overflow: auto;
   display: flex;
 }

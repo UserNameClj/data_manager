@@ -50,25 +50,42 @@ var subject_msg = Mock.mock({
   "subject": ''
 })
 
-var classMsg = Mock.mock('/class/massage', 'get', {
-  code:'0',
+var schoolMsg = Mock.mock('/school/message', 'get', {
+  code:0,
   "data|4": [{
     "session|+1": 2015,
     'subject': [{
       "name": "shuxue",
       "classNum|1-3": 1,
-      "id|+1":1
+      "classId|+1":1
     }, {
       "name": "jisuanji",
       "classNum|1-3": 1,
-      "id|+1":100
+      "classId|+1":100
     }, {
       "name": "huaxue",
       "classNum|1-3": 1,
-      "id|+1":1000
+      "classId|+1":1000
     }]
   }]
+})
 
+var classMsg=Mock.mock('/class/message',/get|post/,{
+  code:0,
+  total:30,
+  "data|20-30":[
+    { 
+      "studentId|+1":15040201,
+      "name":'@cname',
+      "QQ|100000000-1000000000":9,
+      "nation":'汉族',
+      "sex|1":['girl','box'],
+      "bornTime":"@date(\"yyyy-MM-dd\")",
+      "status|1":['normal','suspension','expulsion'],
+      "hometown":"@province",
+      "photo":"@image"
+    }
+  ]
 })
 
 // console.log(classMsg)

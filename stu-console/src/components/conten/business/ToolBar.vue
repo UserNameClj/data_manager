@@ -28,7 +28,11 @@ export default {
   components: {},
   methods: {
     search() {
-      console.log(this.searchMsg.trim());
+
+      var searchValue=this.searchMsg.trim();
+      if(searchValue){
+        PubSub.publish('SearchValue',searchValue)
+      }
       this.searchMsg = "";
       this.$refs.search.focus();
     }
